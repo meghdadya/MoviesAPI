@@ -9,5 +9,5 @@
         android:id="@+id/moviesFragment"
         android:name="com.github.moviesapi.ui.movies_list.MoviesFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_movies" />
 </navigation>
