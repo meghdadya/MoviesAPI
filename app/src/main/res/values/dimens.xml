@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- basic dimensions -->
+    <dimen name="xxx_small">@dimen/_2sdp</dimen>
+    <dimen name="xx_small">@dimen/_4sdp</dimen>
+    <dimen name="x_small">@dimen/_6sdp</dimen>
+    <dimen name="small">@dimen/_8sdp</dimen>
+    <dimen name="medium">@dimen/_16sdp</dimen>
+    <dimen name="mid_medium">@dimen/_20sdp</dimen>
+    <dimen name="mid_large">@dimen/_24sdp</dimen>
+    <dimen name="large">@dimen/_32sdp</dimen>
+    <dimen name="x_large">@dimen/_48sdp</dimen>
+    <dimen name="xx_large">@dimen/_64sdp</dimen>
+
+    <!--text sizes    -->
+    <dimen name="xxx_small_text">@dimen/_4ssp</dimen>
+    <dimen name="xx_small_text">@dimen/_6ssp</dimen>
+    <dimen name="x_small_text">@dimen/_9ssp</dimen>
+    <dimen name="small_text">@dimen/_11ssp</dimen>
+    <dimen name="normal_text">@dimen/_12ssp</dimen>
+    <dimen name="medium_text">@dimen/_14ssp</dimen>
+    <dimen name="large_text">@dimen/_18ssp</dimen>
+
+</resources>
