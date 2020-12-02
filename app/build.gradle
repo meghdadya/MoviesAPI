@@ -13,6 +13,10 @@ android {
     compileSdkVersion rootProject.compileSdkVersion
     buildToolsVersion rootProject.buildToolsVersion
 
+    dataBinding {
+        enabled = true
+    }
+
     defaultConfig {
         applicationId "com.github.moviesapi"
         minSdkVersion rootProject.minSdkVersion
