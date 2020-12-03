@@ -21,5 +21,8 @@
     <dimen name="normal_text">@dimen/_12ssp</dimen>
     <dimen name="medium_text">@dimen/_14ssp</dimen>
     <dimen name="large_text">@dimen/_18ssp</dimen>
+    <dimen name="x_large_text">@dimen/_20ssp</dimen>
+    <dimen name="xx_large_text">@dimen/_22ssp</dimen>
+    <dimen name="xxx_large_text">@dimen/_30ssp</dimen>
 
 </resources>

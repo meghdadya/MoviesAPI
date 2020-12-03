@@ -1,19 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/bg_color"
+        android:orientation="vertical"
         tools:context=".ui.movies_list.MoviesFragment">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/medium"
+            android:layout_marginTop="@dimen/medium"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="@string/search"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/xxx_large_text" />
+
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/medium"
+            android:layout_marginTop="@dimen/xx_small"
+            android:layout_marginBottom="@dimen/small"
+            android:background="@null"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:fontFamily="@font/montserrat_light"
+            android:hint="@string/hint"
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/text_hint_color"
+            android:textSize="@dimen/xx_large_text"
+            app:backgroundTint="@color/text_hint_color" />
 
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            tools:listitem="@layout/list_item" />
 
 
-    </FrameLayout>
+    </LinearLayout>
 </layout>

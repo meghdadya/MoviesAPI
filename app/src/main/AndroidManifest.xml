@@ -15,7 +15,8 @@
         android:theme="@style/Theme.MoviesApi">
         <activity
             android:name=".MainActivity"
-            android:theme="@style/no_actionbar_theme">
+            android:theme="@style/no_actionbar_theme"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
