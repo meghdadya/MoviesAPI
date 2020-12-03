@@ -1,13 +1,14 @@
 package com.github.moviesapi.di
 
-import android.content.Context
 import com.github.moviesapi.BuildConfig
+import com.github.moviesapi.network.DiscoverApi
+import com.github.moviesapi.repository.MoviesListDataSource
+import com.github.moviesapi.repository.MoviesListRepository
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.serialization.UnstableDefault
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -18,7 +19,6 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(ApplicationComponent::class)
-
 object HiltModules {
 
     @Provides
@@ -35,5 +35,19 @@ object HiltModules {
             .client(okHttpClient)
             .build()
     }
+
+    @Provides
+    fun provideAPI(retrofit: Retrofit): DiscoverApi =
+        retrofit.create(DiscoverApi::class.java)
+
+    @Provides
+    fun provideMoviesListDataSource(api: DiscoverApi) =
+        MoviesListDataSource(api)
+
+    @Singleton
+    @Provides
+    fun provideMoviesRepository(dataSource: MoviesListDataSource) =
+        MoviesListRepository(dataSource)
+
 
 }
