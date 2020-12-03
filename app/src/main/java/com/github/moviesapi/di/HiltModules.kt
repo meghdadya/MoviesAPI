@@ -34,7 +34,10 @@ object HiltModules {
             .retryOnConnectionFailure(true).addInterceptor(interceptor).build()
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
-            .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
+            .addConverterFactory(Json {
+                isLenient = true
+                ignoreUnknownKeys = true
+            }.asConverterFactory("application/json".toMediaType()))
             .client(okHttpClient)
             .build()
     }

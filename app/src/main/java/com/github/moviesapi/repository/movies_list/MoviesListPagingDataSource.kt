@@ -19,10 +19,10 @@ class MoviesListPagingDataSource(
                 }
             }
             LoadResult.Page(
-                data = movieListResponse.results,
+                data = movieListResponse.results!!,
                 prevKey = if (nextPage == 1) null else nextPage - 1,
-                nextKey = if (nextPage < movieListResponse.total_pages)
-                    movieListResponse.page.plus(1) else null
+                nextKey = if (nextPage < movieListResponse.total_pages!!)
+                    movieListResponse.page!!.plus(1) else null
             )
 
         } catch (e: Exception) {
