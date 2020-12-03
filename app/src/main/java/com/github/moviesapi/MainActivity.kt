@@ -7,7 +7,9 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.github.moviesapi.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -23,19 +25,23 @@ class MainActivity : AppCompatActivity() {
 
 
     fun showProgress() {
-        binding.mainActivityLoading.visibility = View.VISIBLE
+        if (this::binding.isInitialized)
+            binding.mainActivityLoading.visibility = View.VISIBLE
     }
 
     fun hideProgress() {
-        binding.mainActivityLoading.visibility = View.INVISIBLE
+        if (this::binding.isInitialized)
+            binding.mainActivityLoading.visibility = View.GONE
     }
 
     fun showToolbar() {
-        binding.toolbarLayout.toolbar.visibility = View.VISIBLE
+        if (this::binding.isInitialized)
+            binding.toolbar.visibility = View.VISIBLE
     }
 
     fun hideToolbar() {
-        binding.toolbarLayout.toolbar.visibility = View.INVISIBLE
+        if (this::binding.isInitialized)
+            binding.toolbar.visibility = View.GONE
     }
 
 }
