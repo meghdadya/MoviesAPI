@@ -3,7 +3,7 @@ package com.github.moviesapi.network.response
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class DiscoverResponse(
+data class MoviesResponse(
     val page: Int,
     val results: List<Result>,
     val total_pages: Int,

@@ -1,6 +1,6 @@
-package com.github.moviesapi.repository
+package com.github.moviesapi.repository.movies_list
 
-import com.github.moviesapi.network.DiscoverApi
+import com.github.moviesapi.network.api.DiscoverApi
 import com.github.moviesapi.network.BaseDataSource
 import javax.inject.Inject
 

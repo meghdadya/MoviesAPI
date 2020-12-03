@@ -1,14 +1,14 @@
-package com.github.moviesapi.repository
+package com.github.moviesapi.repository.movies_list
 
 import androidx.paging.PagingSource
-import com.github.moviesapi.network.response.DiscoverResponse
+import com.github.moviesapi.network.response.MoviesResponse
 import com.github.moviesapi.network.response.Result
 
 class MoviesListPagingDataSource(
     private val repository: MoviesListRepository
 ) : PagingSource<Int, Result>() {
 
-    private lateinit var movieListResponse: DiscoverResponse
+    private lateinit var movieListResponse: MoviesResponse
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Result> {
         return try {
