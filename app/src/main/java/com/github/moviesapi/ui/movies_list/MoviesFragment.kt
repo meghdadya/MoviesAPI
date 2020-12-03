@@ -5,9 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import androidx.appcompat.widget.AppCompatEditText
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.PagingData
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.room.Query
 import com.github.moviesapi.databinding.FragmentMoviesBinding
 import com.github.moviesapi.ui.MainViewModel
 import com.github.moviesapi.utils.hideToolbar
@@ -40,13 +45,42 @@ class MoviesFragment : Fragment() {
         view.post {
             setupList()
             setupView()
+            binding.fragmentMoviesSearchBox.doAfterTextChanged { text ->
+                text?.let {
+                    if (it.length > 3) {
+                        clearList()
+                        searchMovie(it.toString())
+
+                    } else {
+                        if (it.isEmpty()) {
+                            clearList()
+                            setupView()
+                        }
+                    }
+                }
+            }
+
         }
+    }
+
+    private fun searchMovie(query: String) {
+        lifecycleScope.launch {
+            viewModel.observeSearchMovies(query).collect {
+                mainListAdapter.submitData(it)
+                setupList()
+            }
+        }
+    }
+
+    private fun clearList() {
+        mainListAdapter.submitData(lifecycle, PagingData.empty())
     }
 
     private fun setupView() {
         lifecycleScope.launch {
             viewModel.observeDiscoverMovies().collect {
                 mainListAdapter.submitData(it)
+
             }
         }
     }

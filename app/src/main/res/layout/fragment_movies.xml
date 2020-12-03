@@ -22,17 +22,18 @@
 
 
         <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/fragment_movies_search_box"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/medium"
             android:layout_marginTop="@dimen/xx_small"
             android:layout_marginBottom="@dimen/small"
             android:background="@null"
-            android:textCursorDrawable="@drawable/color_cursor"
             android:fontFamily="@font/montserrat_light"
             android:hint="@string/hint"
             android:textColor="@color/text_color"
             android:textColorHint="@color/text_hint_color"
+            android:textCursorDrawable="@drawable/color_cursor"
             android:textSize="@dimen/xx_large_text"
             app:backgroundTint="@color/text_hint_color" />
 
