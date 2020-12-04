@@ -9,11 +9,13 @@ import com.github.moviesapi.repository.movies_list.MoviesListPagingDataSource
 import com.github.moviesapi.repository.movies_list.MoviesListRepository
 import com.github.moviesapi.repository.search_movies.SearchMoviesPagingDataSource
 import com.github.moviesapi.repository.search_movies.SearchMoviesRepository
+import com.github.moviesapi.repository.show_movie.ShowMovieRepository
 import kotlinx.coroutines.flow.Flow
 
 class MainViewModel @ViewModelInject constructor(
     private val moviesListRepository: MoviesListRepository,
-    private val searchMoviesRepository: SearchMoviesRepository
+    private val searchMoviesRepository: SearchMoviesRepository,
+    private val movieRepository: ShowMovieRepository
 ) :
     ViewModel() {
 
@@ -29,5 +31,7 @@ class MainViewModel @ViewModelInject constructor(
             SearchMoviesPagingDataSource(searchMoviesRepository, query)
         }.flow.cachedIn(viewModelScope)
     }
+
+    fun observeMovie(id:Int) = movieRepository.getMovie(id)
 
 }

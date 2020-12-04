@@ -44,6 +44,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/main_activity_loading"
             android:layout_width="match_parent"
+            android:background="@color/bg_color_alpha_two"
             android:layout_height="match_parent"
             android:visibility="gone">
 

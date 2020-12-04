@@ -10,6 +10,8 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Query
@@ -86,7 +88,9 @@ class MoviesFragment : Fragment() {
     }
 
     private fun setupList() {
-        mainListAdapter = MainListAdapter()
+        mainListAdapter = MainListAdapter(onClickListener = { view, item ->
+            navigateToShowMovie(view, item.id!!)
+        })
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = mainListAdapter
@@ -96,6 +100,19 @@ class MoviesFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun navigateToShowMovie(view: View, id: Int) {
+        view.let {
+            val extras = FragmentNavigatorExtras(
+                view to id.toString()
+            )
+            val action =
+                MoviesFragmentDirections.actionMoviesFragmentToShowMovieFragment(
+                    id, id.toString()
+                )
+            findNavController().navigate(action, extras)
+        }
     }
 
 }

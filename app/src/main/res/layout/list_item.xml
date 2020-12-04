@@ -17,6 +17,7 @@
 
 
         <ImageView
+            android:id="@+id/list_item_image"
             android:layout_width="0dp"
             android:layout_height="@dimen/_200sdp"
             android:layout_marginEnd="@dimen/small"

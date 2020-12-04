@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.github.moviesapi.network.response.MovieResponse" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_color">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/fragment_show_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/image_view_shape"
+                android:scaleType="center"
+                android:src="@drawable/poster_place_holder"
+                app:imageUrl="@{model.validPosterPath}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_gradiant">
+
+                <TextView
+                    android:id="@+id/fragment_show_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/medium"
+                    android:layout_marginEnd="@dimen/medium"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="@{model.title}"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/xx_large_text"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHeight_percent="0.5"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/fragment_show_year"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/medium"
+                    android:layout_marginTop="@dimen/xx_small"
+                    android:layout_marginEnd="@dimen/medium"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="@{model.release_date}"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/small"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_show_title" />
+
+
+                <TextView
+                    android:id="@+id/fragment_show_overview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/medium"
+                    android:layout_marginTop="@dimen/large"
+                    android:layout_marginEnd="@dimen/medium"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="@{model.overview}"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/medium"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_show_year" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>
