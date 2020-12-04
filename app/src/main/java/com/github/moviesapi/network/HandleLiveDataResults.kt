@@ -5,7 +5,7 @@ import androidx.lifecycle.liveData
 import kotlinx.coroutines.Dispatchers
 
 
-fun <T> resultLiveDataWithoutDB(
+fun <T> resultLiveData(
     networkCall: suspend () -> Result<T>
 ): LiveData<Result<T>> = liveData(Dispatchers.IO) {
     emit(Result.loading())

@@ -2,11 +2,14 @@ package com.github.moviesapi.di
 
 import com.github.moviesapi.BuildConfig
 import com.github.moviesapi.network.api.DiscoverApi
+import com.github.moviesapi.network.api.MovieApi
 import com.github.moviesapi.network.api.SearchApi
 import com.github.moviesapi.repository.movies_list.MoviesListDataSource
 import com.github.moviesapi.repository.movies_list.MoviesListRepository
 import com.github.moviesapi.repository.search_movies.SearchMoviesDataSource
 import com.github.moviesapi.repository.search_movies.SearchMoviesRepository
+import com.github.moviesapi.repository.show_movie.ShowMovieDataSource
+import com.github.moviesapi.repository.show_movie.ShowMovieRepository
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
@@ -67,5 +70,19 @@ object HiltModules {
     @Provides
     fun provideSearchMoviesRepository(dataSource: SearchMoviesDataSource) =
         SearchMoviesRepository(dataSource)
+
+    @Provides
+    fun provideMovieApi(retrofit: Retrofit): MovieApi =
+        retrofit.create(MovieApi::class.java)
+
+    @Provides
+    fun provideShowMovieDataSource(api: MovieApi) =
+        ShowMovieDataSource(api)
+
+    @Singleton
+    @Provides
+    fun provideShowMovieRepository(dataSource: ShowMovieDataSource) =
+        ShowMovieRepository(dataSource)
+
 
 }
